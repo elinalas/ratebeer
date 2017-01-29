@@ -14,17 +14,19 @@
 
   <tbody>
     <% @beers.each do |beer| %>
+      <% byebug if beer.brewery.nil? %>
       <tr>
         <td><a href="<%=beer_path(beer.id) %>"><%=beer.name%></a></td>
         <td><%= beer.style %></td>
 
-        <td><a href="<%=brewery_path(beer.brewery.id) %>"><%=beer.brewery.name%></a></td>
+        <td><%= link_to beer.brewery.name, beer.brewery %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 
