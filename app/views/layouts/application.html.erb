@@ -11,7 +11,24 @@
   <%= link_to 'Breweries', breweries_path %>
   <%= link_to 'Beers', beers_path %>
   <%= link_to 'Ratings', ratings_path%>
+  <strong>|</strong>
+  <%= if session[:user_id]%>
+      Signed in as <%= current_user.username%>
+      <%=link_to 'Log out', logout_path%>
+  <%= else %>
+      <%= link_to 'Log in', login_path%>
+  <%= link_to 'Rate a beer', new_rating_path %>
 </div>
+
+<% if session[:last_rating].nil? %>
+    <p>no ratings given</p>
+<% else %>
+    <p>previous rating: <%= session[:last_rating] %></p>
+<% end %>
+
+<% if current_user %>
+    <p><%= current_user.username %> signed in</p>
+<% end %>
 
 <%= yield %>
 
