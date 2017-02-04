@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true,
             length: { minimum: 3, maximum: 30 }
   PASSWORD_FORMAT = /\A
-  (?=.{4,})          # Must contain 8 or more characters
-  (?=.*\d)           # Must contain a digit
-  (?=.*[A-Z])        # Must contain an upper case character
+  (?=.{4,})
+  (?=.*\d)
+  (?=.*[A-Z])
 /x
 
   validates :password,
