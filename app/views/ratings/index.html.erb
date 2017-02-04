@@ -2,9 +2,15 @@
 
 <ul>
   <% @ratings.each do |rating| %>
-      <li> <%= rating.to_s %> <%= link_to 'delete', rating_path(rating.id), method: :delete, data: { confirm: 'Are you sure?' }  %> </li>
+      <li> <%= rating.to_s %> <%= link_to rating.user.username, rating.user%></li>
   <% end %>
 </ul>
 
 
-<%= link_to 'New Rating', new_rating_path %>
+<% if current_user %>
+    <%= link_to 'New Rating', new_rating_path %>
+<% else %>
+    You have to log in to make ratings.
+
+<% end %>
+

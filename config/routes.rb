@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :memberships
+  resources :beer_clubs
   resources :users
   resources :beers
   resources :breweries
@@ -8,10 +10,11 @@ Rails.application.routes.draw do
   root 'breweries#index'
   get 'signup', to: 'users#new', as: "singup"
   get 'beers', to: 'beers#index'
-  get 'ratings', to: 'ratings#index'
-  get 'ratings/new', to:'ratings#new'
-  post 'ratings', to: 'ratings#create'
   get 'signin', to: 'sessions#new', as: "login"
+  get 'memberships', to: 'memberships#new'
+  post 'memberships', to: 'memberships#create'
+  get 'beer_clubs', to: 'beer_clubs#index'
+  post 'ratings', to: 'ratings#create'
   delete 'signout', to: 'sessions#destroy', as: "logout"
 
 
