@@ -64,7 +64,21 @@ end
         format.json { render :show, status: :created, location: @beer }
       else
         @breweries = Brewery.all
-        @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+        @styles = ["Altbier", "Amber Ale", "American Pale Ale", "American Strong Ale", "Barley wine", "Bitter", "Brown Ale",
+                   "Cream Ale", "English Pale Ale", "English Strong Ale", "Golden Ale/Blond Ale",
+                   "Fruit beer", "Imperial/Double IPA", "India Pale Ale (IPA)",
+                   "Irish Ale", "Kölsch", "Mild Ale", "Old Ale", "Saison", "Sahti", "Premium Bitter /ESB",
+                   "Scotch Ale", "Scottish Ale", "Abbey Dubbel", "Abbey Tripel", "Abt/Quadrupel",
+                   "Belgian ale", "Belgian strong ale", "Bière de Garde", "Foreign Stout",
+                   "Imperial Stout", "Dry Stout", "Porter", "Stout", "Sweet Stout",
+                   "American style wheatbeer", "Berliner Weisse", "Dunkel-Weizen", "Hefe-Weizenbier (Hefe-Weißbier)",
+                   "Kristall-Weizenbier", "Weizen-Bock", "Witbier", "American style dark lager", "Bock",
+                   "Pils", "California Common", "Doppelbock",
+                   "German pilsner", "Dortmunder/Helles", "Dunkel/Münchener/Münchner", "Eisbock",
+                   "European Strong Lager", "Malt Liquor",
+                   "Mead, mjød, mjöd, miód", "Oktoberfest/Märzen",
+                   "Pilsener", "Premium Lager", "Rauchbier", "Schwarzbier", "Ungespundetes bier",
+                   "Light lager", "Vienna/Wienerbier", "Zwickel/Keller/Landbier", "Lambicit", "Other beer type"]
         format.html { render :new }
         format.json { render json: @beer.errors, status: :unprocessable_entity }
       end
