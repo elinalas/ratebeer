@@ -16,13 +16,33 @@ class BeersController < ApplicationController
   def new
   @beer = Beer.new
   @breweries = Brewery.all
-  @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+  @styles = ["Ale", "Apo", "Banana beer", "Bappir", "Boza", "Brem", "Brunswick Mum",
+  "Cask ale", "Cauim", "Chhaang", "Chicha", "Chicha de jora", "Choujiu",
+             "Christmas beer", "Chuak", "Cock ale", "Corn beer", "Cuirm",
+  "Draught beer", "Farmhouse ale", "Fruit beer", "Ginger beer", "Gluten-free beer",
+             "Gotlandsdricka", "Gruit", "Handia", "Happoshu", "Harvest ale",
+      "Huangjiu", "Ibawatu", "Kasiri", "Kvass", "Lager", "Low-alcohol beer",
+             "Malt beer", "Malt beverage", "Mbege", "Mild ale", "Millet beer",
+             "Near beer", "Oshikundu", "Pendha", "Pito", "Purl", "Sahti",
+             "Seasonal beer", "Shandy", "Small beer", "Spiced ale", "Spruce beer",
+             "Svagdricka", "Tella", "Tiswin", "Tongba",
+             "Umqombothi", "Zozu", "Eqyptian zythos"]
 end
 
   # GET /beers/1/edit
   def edit
     @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @styles = ["Ale", "Apo", "Banana beer", "Bappir", "Boza", "Brem", "Brunswick Mum",
+               "Cask ale", "Cauim", "Chhaang", "Chicha", "Chicha de jora", "Choujiu",
+               "Christmas beer", "Chuak", "Cock ale", "Corn beer", "Cuirm",
+               "Draught beer", "Farmhouse ale", "Fruit beer", "Ginger beer", "Gluten-free beer",
+               "Gotlandsdricka", "Gruit", "Handia", "Happoshu", "Harvest ale",
+               "Huangjiu", "Ibawatu", "Kasiri", "Kvass", "Lager", "Low-alcohol beer",
+               "Malt beer", "Malt beverage", "Mbege", "Mild ale", "Millet beer",
+               "Near beer", "Oshikundu", "Pendha", "Pito", "Purl", "Sahti",
+               "Seasonal beer", "Shandy", "Small beer", "Spiced ale", "Spruce beer",
+               "Svagdricka", "Tella", "Tiswin", "Tongba",
+               "Umqombothi", "Zozu", "Eqyptian zythos"]
   end
 
   # POST /beers
