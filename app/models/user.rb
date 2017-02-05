@@ -3,21 +3,12 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true,
             length: { minimum: 3, maximum: 30 }
-  PASSWORD_FORMAT = /\A
-  (?=.{4,})
-  (?=.*\d)
-  (?=.*[A-Z])
-/x
+  PASSWORD_FORMAT = /\A(?=.{4,})(?=.*\d)(?=.*[A-Z])/x
 
   validates :password,
             format: {with: PASSWORD_FORMAT},
-            confirmation: true,
-            on: :create
+            confirmation: true
 
-  validates :password,
-            format: {with: PASSWORD_FORMAT},
-            confirmation: true,
-            on: :update
 
   has_secure_password
   has_many :ratings
