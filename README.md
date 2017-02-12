@@ -2,6 +2,8 @@
 
 LINKKI HEROKUUN: https://shielded-journey-53270.herokuapp.com/
 
+[![Build Status](https://travis-ci.org/elinalas/ratebeer-public.png)](https://travis-ci.org/elinalas/ratebeer-public)
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
