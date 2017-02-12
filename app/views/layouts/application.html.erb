@@ -22,20 +22,10 @@
   <% else %>
       <%= link_to 'Log in', login_path%>
 
-      <%= link_to 'Sign up', singup_path%>
+      <%= link_to 'Sign up', signup_path%>
   <%end%>
 
 </div>
-
-<% if session[:last_rating].nil? %>
-    <p>no ratings given</p>
-<% else %>
-    <p>previous rating: <%= session[:last_rating] %></p>
-<% end %>
-
-<% if current_user %>
-    <p><%= current_user.username %> signed in</p>
-<% end %>
 
 <%= yield %>
 

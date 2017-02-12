@@ -1,6 +1,7 @@
 class Beer < ActiveRecord::Base
   include RatingAverage
   validates :name, length: { minimum: 1 }
+  validates :style, presence: true
 
   belongs_to :brewery
   has_many :raters, -> { uniq }, through: :ratings, source: :user

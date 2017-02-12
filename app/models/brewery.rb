@@ -19,6 +19,9 @@ class Brewery < ActiveRecord::Base
      end
   end
 
+  def to_s
+    "#{name}"
+  end
 
 
   def restart

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   root 'breweries#index'
-  get 'signup', to: 'users#new', as: "singup"
+  get 'signup', to: 'users#new', as: "signup"
   get 'beers', to: 'beers#index'
   get 'signin', to: 'sessions#new', as: "login"
   get 'memberships', to: 'memberships#new'

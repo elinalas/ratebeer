@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def ensure_that_signed_in
+    redirect_to login_path, notice:'you should be signed in' if current_user.nil?
+  end
+
   helper_method :current_user
 
 end

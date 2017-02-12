@@ -6,11 +6,12 @@
   <% end %>
 </ul>
 
-
-<% if current_user %>
-    <%= link_to 'New Rating', new_rating_path %>
+<% if @ratings.empty? %>
+    Help us to rate beers!
 <% else %>
-    You have to log in to make ratings.
+    <%=pluralize( @ratings.size, 'ratings')%><br>
+<% end %><br><br>
 
-<% end %>
+    <%= link_to 'New Rating', new_rating_path if current_user %>
+
 
