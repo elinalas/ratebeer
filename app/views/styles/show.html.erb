@@ -1,13 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @style.name %>
+<h1><%= @style.name %></h1>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @style.description %>
+  <% if @style.description.nil? %>
+      There is no description for this beer style.
+  <% else %>
+      <%= @style.description %>
+  <%end%>
+</p>
+
+<h2>Beers</h2>
+<p>
+  <% @style.beers.each do |beer| %>
+    <td><a href="<%=beer_path(beer.id) %>"><%=beer.name%></a></td><br>
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_style_path(@style) %> |

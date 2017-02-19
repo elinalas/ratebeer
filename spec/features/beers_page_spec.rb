@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "Creating beers" do
   let!(:user) { FactoryGirl.create :user }
+  let!(:style) { FactoryGirl.create :style }
 
   before :each do
 
@@ -21,7 +22,9 @@ describe "Creating beers" do
     sign_in(username:"Pekka", password:"Foobar1")
     visit new_beer_path
     fill_in('beer[name]', with: '')
-    select('Pilsner', from: 'beer[style]')
+
+    select('Koff', from: 'beer[brewery_id]')
+
 
     expect{
       click_button "Create Beer"
@@ -37,7 +40,9 @@ describe "Creating beers" do
     sign_in(username:"Pekka", password:"Foobar1")
     visit new_beer_path
     fill_in('beer[name]', with: 'Olut')
-    select('Pilsner', from: 'beer[style]')
+    select('Pilsner', from: 'beer[style_id]')
+    select('Koff', from: 'beer[brewery_id]')
+
 
     expect{
       click_button "Create Beer"

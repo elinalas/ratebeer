@@ -9,7 +9,7 @@
   <% else %>
       User has made <%=pluralize( @user.ratings.size, 'rating')%> ratings<br>
       Average rating: <%=@user.average_rating%><br>
-    Favourite style: <%=@user.favorite_style%><br>
+    Favourite style: <%=@user.favorite_style.name%><br>
     Favourite beer: <%=@user.favorite_beer%><br>
     Favourite brewery: <%=@user.favorite_brewery%><br><br>
   <% end %>

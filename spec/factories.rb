@@ -1,4 +1,17 @@
 FactoryGirl.define do
+
+  factory :style do
+    name "Pilsner"
+    description ""
+
+  end
+
+  factory :style2, class: Style do
+    name "Amber Ale"
+    description ""
+
+  end
+
   factory :user do
     username "Pekka"
     password "Foobar1"
@@ -28,7 +41,7 @@ FactoryGirl.define do
   factory :beer do
     name "moi"
     brewery
-    style "Lager"
+    style
   end
 
 end
