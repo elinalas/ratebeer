@@ -25,14 +25,16 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
+
     membership = Membership.new(membership_params)
     membership.user = current_user
 
-    if membership.save
-      redirect_to membership.beer_club
+    if membership.valid? and membership.save
+      redirect_to membership.beer_club, notice: "#{current_user.username}, welcome to the club!"
     else
       render :new
     end
+
   end
 
   # PATCH/PUT /memberships/1
@@ -52,11 +54,14 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
+
+    @membership = Membership.find_by id: params[:id]
+    user = @membership.user
+    beer_club = @membership.beer_club
+
     @membership.destroy
-    respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(user), notice: "You are no longer a member in #{beer_club.name}"
+
   end
 
   private

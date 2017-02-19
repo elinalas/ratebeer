@@ -22,8 +22,20 @@
     Average rating: <%=@beer.average_rating%><br><br>
 <% end %>
 
+<% if current_user %>
+    <h4>give a rating:</h4>
 
-<%= link_to 'Edit', edit_beer_path(@beer) if current_user %> |
+    <%= form_for(@rating) do |f| %>
+        <%= f.hidden_field :beer_id %>
+        score (1-50): <%= f.number_field :score %>
+        <%= f.submit %>
+    <% end %>
+    <br><br>
+
+    <%= link_to 'Edit', edit_beer_path(@beer) %>
+    <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
 <%= link_to 'Back', beers_path %>
 
 

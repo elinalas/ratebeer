@@ -1,5 +1,17 @@
 <h1>New Beer</h1>
 
+<% if @beer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited rating from being saved:</h2>
+
+      <ul>
+        <% @beer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to 'Back', beers_path %>

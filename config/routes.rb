@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :styles
   resources :memberships
   resources :beer_clubs
   resources :users
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :breweries
   resources :ratings, only: [:index, :new, :create, :destroy]
   resource :session, only: [:new, :create, :destroy]
+  resources :places, only:[:index, :show]
 
   root 'breweries#index'
   get 'signup', to: 'users#new', as: "signup"
@@ -15,8 +17,10 @@ Rails.application.routes.draw do
   post 'memberships', to: 'memberships#create'
   get 'beer_clubs', to: 'beer_clubs#index'
   post 'ratings', to: 'ratings#create'
+  get 'places', to: 'places#index'
   delete 'signout', to: 'sessions#destroy', as: "logout"
-
+  post 'places', to:'places#search'
+  post 'places', to:'places#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
