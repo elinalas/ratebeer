@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if current_user
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -58,17 +59,33 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    else
+      redirect_to :root
+    end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    if current_user
     user = User.find params[:id]
     Rating.all.select{ |r| r.user == user }.each{ |r| r.delete }
     Membership.all.select{ |r| r.user == user }.each{ |r| r.delete }
     user.delete if current_user == user
     redirect_to :root
+    else
+      redirect_to :root
+    end
 
+  end
+
+  def freeze_account
+    puts current_user.admin?
+    if current_user.admin?
+      user = User.find params[:id]
+      user.update_attribute(:block, !user.block?)
+    end
+    redirect_to user
   end
 
   private

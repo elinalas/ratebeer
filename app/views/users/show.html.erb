@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-<h1><%= @user.username %></h1><br>
+<h1><%= @user.username %></h1>
+<%if @user.block? %>
+    <span style="color:blue" class="label label-info">Frozen account</span>
+<%end%>
+<br><br>
 
 
   <% if @user.ratings.empty? %>
       User has not rated anything yet!
   <% else %>
       User has made <%=pluralize( @user.ratings.size, 'rating')%> ratings<br>
-      Average rating: <%=@user.average_rating%><br>
+      Average rating: <%=round(@user.average_rating)%><br>
     Favourite style: <%=@user.favorite_style.name%><br>
     Favourite beer: <%=@user.favorite_beer%><br>
     Favourite brewery: <%=@user.favorite_brewery%><br><br>
@@ -41,7 +44,19 @@
 <% end %>
 </tbody></p><br>
 
-<%= link_to 'Chance your password', edit_user_path(@user) %> |
-    <%= link_to "Delete this username", user_path, method: :delete, data: { confirm: "You sure?" } %>
-|
+<%if current_user%>
+<%if current_user.admin?%>
+    <% if @user.block? %>
+        <%= link_to 'Unfroze account', freeze_path(@user), class:'btn btn-danger', method: :post, data: { confirm: 'Are you sure?' } %>
+
+    <%else%>
+        <%= link_to 'Froze account', freeze_path(@user), class:'btn btn-danger', method: :post, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+
+<%end%>
+
+
+<%= link_to 'Chance your password', edit_user_path(@user),  class:'btn btn-primary' %> |
+    <%= link_to "Delete this username", user_path,  class:'btn btn-danger', method: :delete, data: { confirm: "You sure?" } %>
+<%end%> |
 <%= link_to 'Back', users_path %>

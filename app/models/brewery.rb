@@ -4,6 +4,9 @@ class Brewery < ActiveRecord::Base
   validate :year_not_more_than_now
   validates :year, numericality: { greater_than_or_equal_to: 1042, only_integer: true }
 
+  scope :active, -> { where active:true }
+  scope :retired, -> { where active:[nil,false] }
+
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
 
@@ -28,4 +31,10 @@ class Brewery < ActiveRecord::Base
     self.year = 2017
     "changed year to #{year}"
   end
+
+  def self.top(n)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by{ |b| -(b.average_rating||0) }
+    sorted_by_rating_in_desc_order[0,n]
+  end
+
 end

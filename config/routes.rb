@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy', as: "logout"
   post 'places', to:'places#search'
   post 'places', to:'places#search'
+  post 'users/:id/freeze', to: 'users#freeze_account', as: "freeze"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,4 +1,5 @@
 class Rating < ActiveRecord::Base
+  include RatingAverage
   belongs_to :beer
   belongs_to :user   # rating kuuluu myös käyttäjään
 
@@ -9,4 +10,12 @@ class Rating < ActiveRecord::Base
   def to_s
     "#{beer.name} #{score}"
   end
+
+  def self.last_five_ratings
+    a = []
+    a = Rating.all
+    a[0,5]
+  end
+
+
 end
