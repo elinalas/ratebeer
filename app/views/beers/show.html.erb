@@ -19,7 +19,7 @@
     Beer has not yet been rated!
 <% else %>
     Beer has <%=pluralize( @beer.ratings.size, 'rating')%> ratings<br>
-    Average rating: <%=@beer.average_rating%><br><br>
+    Average rating: <%=round(@beer.average_rating)%><br><br>
 <% end %>
 
 <% if current_user %>

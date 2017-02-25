@@ -30,7 +30,7 @@
     Beers has not yet been rated!
 <% else %>
     Beers has <%=pluralize( @brewery.ratings.size, 'ratings')%><br>
-    Average rating: <%=@brewery.average_rating%><br><br>
+    Average rating: <%=round(@brewery.average_rating)%><br><br>
 <% end %><br><br>
 
 
