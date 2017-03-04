@@ -18,6 +18,8 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'sucker_punch', '~> 2.0'
+
 gem 'database_cleaner'
 
 gem 'jquery-turbolinks'

@@ -2,12 +2,20 @@ class BreweriesController < ApplicationController
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_admin, only: [:destroy]
+  before_action :skip_if_cached, only:[:index]
+
 
   # GET /breweries
   # GET /breweries.json
+
+  def skip_if_cached
+    @order = params[:order] || 'name'
+    return render :index if fragment_exist?( 'beerlist' )
+  end
   def index
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
+    @order = params[:order] || 'name'
     order = params[:order] || 'name'
 
     @active_breweries = case order

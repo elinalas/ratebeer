@@ -5,6 +5,7 @@ class BeersController < ApplicationController
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
   before_action :skip_if_cached, only:[:index]
 
+
   def skip_if_cached
     @order = params[:order] || 'name'
     return render :index if fragment_exist?( 'beerlist' )
@@ -13,7 +14,7 @@ class BeersController < ApplicationController
   # GET /beers.json
   def index
     @beers = Beer.includes(:brewery, :style).all
-
+    @order = params[:order] || 'name'
     @beers = case @order
                when 'name' then @beers.sort_by{ |b| b.name }
                when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
