@@ -3,7 +3,7 @@ class Beer < ActiveRecord::Base
   validates :name, length: { minimum: 1 }
   validates :style, presence: true
 
-  belongs_to :brewery
+  belongs_to :brewery, touch: true
   has_many :raters, -> { uniq }, through: :ratings, source: :user
   has_many :ratings, dependent: :destroy
   belongs_to :style

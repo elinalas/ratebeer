@@ -7,4 +7,8 @@ class Style < ActiveRecord::Base
     sorted_by_rating_in_desc_order = Style.all.sort_by{ |b| -(b.average_rating||0) }
     sorted_by_rating_in_desc_order[0,n]
   end
+
+  def to_s
+    "#{style.name}"
+  end
 end

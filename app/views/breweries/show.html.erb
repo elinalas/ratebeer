@@ -1,4 +1,4 @@
-
+<% cache @brewery do %>
 
 <p>
   <h2><%= @brewery.name%>
@@ -38,7 +38,7 @@
     Beers has <%=pluralize( @brewery.ratings.size, 'ratings')%><br>
     Average rating: <%=round(@brewery.average_rating)%><br><br>
 <% end %><br><br>
-
+<%end%>
 
 <%= edit_and_destroy_buttons(@brewery) %>|
 <%= link_to 'Back', breweries_path %>

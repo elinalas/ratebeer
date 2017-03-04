@@ -12,6 +12,7 @@ FactoryGirl.define do
 
   end
 
+
   factory :user do
     username "Pekka"
     password "Foobar1"
