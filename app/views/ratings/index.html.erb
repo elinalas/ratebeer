@@ -25,7 +25,7 @@
       <tbody>
       <% @last_five.each do |r| %>
           <tr>
-            <td><%= r.beer.name%></td>
+            <td><%= link_to r.beer.name, beer_path(r.beer.id)%></td>
             <td><%= r.score%></td>
             <td><%= link_to r.user.username, user_path(r.user_id) %></td>
           </tr>
@@ -50,7 +50,7 @@
       <tbody>
       <% @best_styles.each do |r| %>
           <tr>
-            <td><%= r.name%></td>
+            <td><%=link_to r.name, style_path(r.id)%></td>
 
           </tr>
       <% end %>
