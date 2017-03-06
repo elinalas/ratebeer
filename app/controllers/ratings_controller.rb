@@ -1,7 +1,7 @@
 class RatingsController < ApplicationController
   def index
 
-    @ratings = Rating.includes(:beers, :score, :brewery).all
+    @ratings = Rating.includes(:beers, :score).all
     @top_breweries = Brewery.top 3
     @top_beers = Beer.top 3
     @last_five = Rating.last_five_ratings
