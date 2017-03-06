@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'users/:id/freeze', to: 'users#freeze_account', as: "freeze"
   get 'beerlist', to:'beers#list'
   get 'brewerylist', to:'breweries#list'
+  get 'auth/:provider/callback', to: 'sessions#create_oauth', as: "auth"
 
 
 

@@ -10,7 +10,9 @@ class BreweriesController < ApplicationController
 
   def skip_if_cached
     @order = params[:order] || 'name'
-    return render :index if fragment_exist?( 'beerlist' )
+
+    return render :index if fragment_exist?( "brewerylist-#{@order}" )
+
   end
   def index
     @active_breweries = Brewery.active

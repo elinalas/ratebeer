@@ -79,6 +79,7 @@ group :development, :test do
   #...
 end
 
+gem 'omniauth-github'
 
 
 
